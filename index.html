@@ -1558,26 +1558,14 @@ document.addEventListener('keydown',e=>{
 // INIT
 // ════════════════════════════════════════════════════
 
-(function () {
-  const correctPassword = '123123';
-  const enteredPassword = prompt('Enter password to access this page:');
 
-  if (enteredPassword === correctPassword) {
-    document.body.classList.remove('locked');
-
-    (function init(){
-      applyFilters();
-      setTimeout(rebuildCharts,120);
-      const ms = document.getElementById('mobSearch');
-      if (ms) ms.addEventListener('input', function(){ onSearch(this.value); });
-    })();
-
-  } else {
-    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Inter,sans-serif;background:#020617;color:white;font-size:24px;">Access denied</div>';
-    document.body.classList.remove('locked');
-  }
+  (function init(){
+  applyFilters();
+  setTimeout(rebuildCharts,120);
+  // Sync mob search
+  const ms=document.getElementById('mobSearch');
+  if(ms)ms.addEventListener('input',function(){onSearch(this.value);});
 })();
-
   
 </script>
 
